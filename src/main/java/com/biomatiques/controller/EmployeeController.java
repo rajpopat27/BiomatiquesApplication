@@ -1,4 +1,4 @@
-package com.service.employee;
+package com.biomatiques.controller;
 
 import java.util.List;
 
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.biomatiques.model.Employee;
+import com.biomatiques.service.EmployeeService;
 
 @RestController
 public class EmployeeController {

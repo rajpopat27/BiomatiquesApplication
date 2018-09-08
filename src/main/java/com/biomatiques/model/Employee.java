@@ -1,4 +1,4 @@
-package com.service.employee;
+package com.biomatiques.model;
 
 import java.io.Serializable;
 import java.util.Date;

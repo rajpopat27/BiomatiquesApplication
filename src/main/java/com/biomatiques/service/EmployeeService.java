@@ -1,10 +1,13 @@
-package com.service.employee;
+package com.biomatiques.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.biomatiques.model.Employee;
+import com.biomatiques.repository.EmployeeRepository;
 
 
 
