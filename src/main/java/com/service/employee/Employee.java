@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -34,12 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class Employee implements Serializable{
    
-    public Date getJoinedAt() {
-		return joinedAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+   
 	public Employee() {
        
     }
@@ -60,46 +56,67 @@ public class Employee implements Serializable{
 		@JsonProperty("Last Name")
         public String lastname;
 		
+	    @NotEmpty
 		@JsonProperty("Phone number")
+	    @Pattern(regexp="(^$|[0-9]{10})")
         public String phoneno;
 		
+	    
 		@JsonProperty("Date of birth")
 		@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 		public Date dob;
         
+	    @NotEmpty
 		@JsonProperty("Address")
 		public String address;
         
+	    @NotEmpty
+	    @JsonProperty("Pincode")
+	    public String pincode;
+	    
+	    @NotEmpty
 		@JsonProperty("State")
 		public String state;
         
+	    @NotEmpty
 		@JsonProperty("Email")
 		public String email;
         
-     /*   @JsonProperty("Linkedin Id")
-        public int linkedinid;
+	    
+        @JsonProperty("Linkedin Id")
+        public String linkedinid;
         
+        @NotEmpty
         @JsonProperty("Blood group")
         public String bloodgroup;
         
+        @NotEmpty
         @JsonProperty("Aadhar number")
         public String aadharno;
         
+        @Min(0)
         @JsonProperty("Experience years")
-        public int experience;
+        public Integer experience;
         
+        @NotEmpty
+        @JsonProperty("Department")
         public String department;
         
+        @NotEmpty
         @JsonProperty("Employee type")
         public String employeetype;
         
+        @NotEmpty
         @JsonProperty("Employee post")
         public String post;
         
+        @NotEmpty
         @JsonProperty("Shift name")
         public String shiftname;
         
-        public long salary;*/
+        @Min(1000)
+        @JsonProperty("Salary")
+        public Long salary;
            
         @Column(nullable = false, updatable = false)
 	    @Temporal(TemporalType.TIMESTAMP)
@@ -121,271 +138,141 @@ public class Employee implements Serializable{
         public void setFirstname(String firstname) {
             this.firstname = firstname;
         }
+        
+        //2
         public String getMiddlename() {
             return middlename;
         }
         public void setMiddlename(String middlename) {
             this.middlename = middlename;
         }
+        
+        //3
         public String getLastname() {
             return lastname;
         }
         public void setLastname(String lastname) {
             this.lastname = lastname;
         }
-        //2
+        
+        //4
         public String getPhoneno() {
             return phoneno;
         }
         public void setPhoneno(String phoneno) {
             this.phoneno = phoneno;
         }
-        //3
+        
+        //5
         public Date getDob() {
 			return dob;
 		}
 		public void setDob(Date dob) {
 			this.dob = dob;
 		}
-		//4
+		
+		//6
 		public String getAddress() {
             return address;
         }
         public void setAddress(String address) {
             this.address = address;
         }
+        
+        //7
         public String getState() {
             return state;
         }
         public void setState(String state) {
             this.state = state;
         }
-        //5
+        
+        //8
         public String getEmail() {
             return email;
         }
         public void setEmail(String email) {
             this.email = email;
         }
- /*       //6
-		public int getLinkedinid() {
+        
+        //9
+		public String getLinkedinid() {
 			return linkedinid;
 		}
-		public void setLinkedinid(int linkedinid) {
+		public void setLinkedinid(String linkedinid) {
 			this.linkedinid = linkedinid;
 		}
-        //7
+        //10
 		public String getBloodgroup() {
 			return bloodgroup;
 		}
 		public void setBloodgroup(String bloodgroup) {
 			this.bloodgroup = bloodgroup;
 		}
-		//8
+		//11
 		public String getAadharno() {
 			return aadharno;
 		}
 		public void setAadharno(String aadharno) {
 			this.aadharno = aadharno;
 		}
-		//9
-		public int getExperience() {
+		//12
+		public Integer getExperience() {
 			return experience;
 		}
-		public void setExperience(int experience) {
+		public void setExperience(Integer experience) {
 			this.experience = experience;
 		}
-		//10
+		//13
 		public String getDepartment() {
 			return department;
 		}
 		public void setDepartment(String department) {
 			this.department = department;
 		}
-		//11
+		//14
 		public String getEmployeetype() {
 			return employeetype;
 		}
 		public void setEmployeetype(String employeetype) {
 			this.employeetype = employeetype;
 		}
-		//12
+		//15
 		public String getPost() {
 			return post;
 		}
 		public void setPost(String post) {
 			this.post = post;
 		}
-		//13   
+		//16  
         public String getShiftname() {
 			return shiftname;
 		}
 		public void setShiftname(String shiftname) {
 			this.shiftname = shiftname;
 		}
-		//14
-		public long getSalary() {
+		//17
+		public Long getSalary() {
 			return salary;
 		}
-		public void setSalary(long salary) {
+		public void setSalary(Long salary) {
 			this.salary = salary;
 		}
-		//15
-		public String getDoj() {
-			return doj;
+		
+		//18
+		public String getPincode() {
+			return pincode;
 		}
-		public void setDoj(String doj) {
-			this.doj = doj;
+		public void setPincode(String pincode) {
+			this.pincode = pincode;
 		}
 		
-		*/
-        
-   
-////    @JsonProperty("firstname")
-////    @NotBlank
-//    	private String firstname;
-//   
-//   
-////    @JsonProperty("middleName")
-////    @NotBlank
-//    	private String middleName;
-//   
-//   
-////    @JsonProperty("lastName")
-////    @NotBlank
-//    	private String lastName;
-//   
-////   
-////    @JsonProperty("Address")
-////    @NotBlank
-//    	private String Address;
-//   
-////    @NotBlank
-////    @JsonProperty("pincode")
-////    private Integer pincode;
-//   
-//   
-////    @JsonProperty("state")
-////    @NotBlank
-//    	private String state;
-//   
-//   
-////    @JsonProperty("phoneno")
-////    @NotBlank
-////    @Pattern(regexp="(^$|[0-9]{10})")
-//    private String phoneno;
-//   
-//   
-////    @JsonProperty("email")
-////    @NotBlank
-////    @Email
-//    private String email;
-//       
-////    @NotBlank
-////    @JsonProperty("salary")
-////    private Integer salary;
-//   
-////    @NotBlank
-////    @JsonProperty("dob")
-////    private Date dob;
-//   
-////    @Column(nullable = false, updatable = false)
-////    @Temporal(TemporalType.TIMESTAMP)
-////    @CreatedDate
-////    private Date joinedAt;
-////   
-////    @Column(nullable = false)
-////    @Temporal(TemporalType.TIMESTAMP)
-////    @LastModifiedDate
-////    private Date updatedAt;
-//
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-//
-//    public String getFirstname() {
-//        return firstname;
-//    }
-//
-//    public void setFirstname(String firstname) {
-//        this.firstname = firstname;
-//    }
-//
-//    public String getMiddleName() {
-//        return middleName;
-//    }
-//
-//    public void setMiddleName(String middleName) {
-//        this.middleName = middleName;
-//    }
-//
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
-//
-//    public String getAddress() {
-//        return Address;
-//    }
-//
-//    public void setAddress(String address) {
-//        Address = address;
-//    }
-//
-////    public int getPincode() {
-////        return pincode;
-////    }
-//
-////    public void setPincode(int pincode) {
-////        this.pincode = pincode;
-////    }
-//
-//    public String getState() {
-//        return state;
-//    }
-//
-//    public void setState(String state) {
-//        this.state = state;
-//    }
-//
-//    public String getPhoneno() {
-//        return phoneno;
-//    }
-//
-//    public void setPhoneno(String phoneno) {
-//        this.phoneno = phoneno;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-////    public int getSalary() {
-////        return salary;
-////    }
-////
-////    public void setSalary(int salary) {
-////        this.salary = salary;
-////    }
-//
-////    public Date getDob() {
-////        return dob;
-////    }
-////
-////    public void setDob(Date dob) {
-////        this.dob = dob;
-////    }
-//   
-//   
+		//19
+		 public Date getJoinedAt() {
+				return joinedAt;
+			}
+		public Date getUpdatedAt() {
+			return updatedAt;
+		}
+		
 }
