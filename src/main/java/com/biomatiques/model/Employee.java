@@ -42,6 +42,7 @@ public class Employee implements Serializable{
     
 	    @Id
 	    @GeneratedValue(strategy= GenerationType.IDENTITY)
+	    @Column(name="employeeId")
     	private long id;
 	    
 	    @NotEmpty
@@ -118,7 +119,12 @@ public class Employee implements Serializable{
         @JsonProperty("Salary")
         public Long salary;
            
-        @Column(nullable = false, updatable = false)
+        @NotEmpty
+        @JsonProperty("Iris")
+        public String irisId;
+        
+        
+		@Column(nullable = false, updatable = false)
 	    @Temporal(TemporalType.TIMESTAMP)
 	    @CreatedDate
 	    private Date joinedAt;
@@ -274,5 +280,13 @@ public class Employee implements Serializable{
 		public Date getUpdatedAt() {
 			return updatedAt;
 		}
+		//20	
+		public String getIris() {
+			return irisId;
+		}
+		public void setIris(String irisId) {
+			this.irisId = irisId;
+		}
+
 		
 }
