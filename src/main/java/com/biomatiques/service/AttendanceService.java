@@ -1,6 +1,7 @@
 package com.biomatiques.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +52,13 @@ public class AttendanceService {
 		 	attendance.setEmployeeId(employee.getId());
 	        attendanceRepository.save(attendance);
 	    }
+
+	public List<Attendance> getAttendanceByDate(String date) {
+		List<Attendance> attendanceList = new ArrayList<>();
+		attendanceRepository.findAttendanceByDate(date).forEach(attendanceList::add);
+		return attendanceList;
+	}
+	
+	
+	
 }
