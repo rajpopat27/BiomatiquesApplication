@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +20,9 @@ public class AttendanceController {
 	@Autowired
 	AttendanceService attendanceService;
 	
-	@RequestMapping(value="/attendance/{irisId}",method=RequestMethod.POST,headers="Accept=application/json")
-	public void addAttendance(@PathVariable String irisId) {
+	@RequestMapping(value="/attendance",method=RequestMethod.POST,headers="Accept=application/json")
+	public void addAttendance(@RequestBody String irisId) {
+		System.out.println(irisId);
 		attendanceService.addAttendance(irisId);
 	}
 	
