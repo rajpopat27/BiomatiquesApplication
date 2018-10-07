@@ -9,12 +9,11 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
@@ -25,7 +24,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Entity
 @Table(name="Employee")
@@ -120,8 +118,10 @@ public class Employee implements Serializable{
         public Long salary;
            
         @NotEmpty
-        @JsonProperty("Iris")
-        public String irisId;
+        @JsonProperty("irisId")
+        @Lob
+        @Column(name="irisId",columnDefinition="BLOB")
+        public byte[] irisId;
         
         
 		@Column(nullable = false, updatable = false)
@@ -281,10 +281,10 @@ public class Employee implements Serializable{
 			return updatedAt;
 		}
 		//20	
-		public String getIris() {
-			return irisId;
-		}
-		public void setIris(String irisId) {
+//		public byte[] getIris() {
+//			return irisId;
+//		}
+		public void setIris(byte[] irisId) {
 			this.irisId = irisId;
 		}
 

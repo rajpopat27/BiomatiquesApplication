@@ -44,7 +44,7 @@ public class AttendanceService {
 	        attendanceRepository.findByEmployeeFirstName(firstName).forEach(attendanceList::add);
 	        return attendanceList;
 	    }
-	 public void addAttendance(String irisId) {
+	 public void addAttendance(byte[] irisId) {
 		 	Employee employee = employeeRepository.findByIrisId(irisId);
 		 	Attendance attendance = new Attendance();
 		 	attendance.setEmployeeFirstName(employee.getFirstname());

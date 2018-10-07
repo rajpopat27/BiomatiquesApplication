@@ -8,5 +8,5 @@ import com.biomatiques.model.Employee;
 
 public interface EmployeeRepository extends CrudRepository<Employee,Long> {
 	
-	public Employee findByIrisId(String irisId);
+	public Employee findByIrisId(byte[] irisId);
 }

@@ -21,8 +21,7 @@ public class AttendanceController {
 	AttendanceService attendanceService;
 	
 	@RequestMapping(value="/attendance",method=RequestMethod.POST,headers="Accept=application/json")
-	public void addAttendance(@RequestBody String irisId) {
-		System.out.println(irisId);
+	public void addAttendance(@RequestBody byte[] irisId) {
 		attendanceService.addAttendance(irisId);
 	}
 	
