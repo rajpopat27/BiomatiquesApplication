@@ -118,9 +118,8 @@ public class Employee implements Serializable{
         public Long salary;
            
         @NotEmpty
-        @JsonProperty("irisId")
-        @Lob
-        @Column(name="irisId",columnDefinition="BLOB")
+        @JsonProperty("Iris Id")
+        @Lob       
         public byte[] irisId;
         
         
@@ -137,6 +136,18 @@ public class Employee implements Serializable{
         public long getId() {
     		return id;
     	}
+        
+        
+		public byte[] getIrisId() {
+			return irisId;
+		}
+
+
+		public void setIrisId(byte[] irisId) {
+			this.irisId = irisId;
+		}
+
+
 		//1
         public String getFirstname() {
             return firstname;
@@ -281,12 +292,7 @@ public class Employee implements Serializable{
 			return updatedAt;
 		}
 		//20	
-//		public byte[] getIris() {
-//			return irisId;
-//		}
-		public void setIris(byte[] irisId) {
-			this.irisId = irisId;
-		}
+		
 
 		
 }

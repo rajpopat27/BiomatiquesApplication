@@ -16,34 +16,34 @@ import com.biomatiques.service.ShiftService;
 public class ShiftController {
 	
 	 @Autowired
-	    ShiftService employeeService;
+	    ShiftService shiftService;
 	    
 	    //GET Methods one and all employees
 	    @RequestMapping(method = RequestMethod.GET, value = "/shift")
 	    public List<Shift> getAllEmployees(){
-	        return employeeService.getAllShifts();
+	        return shiftService.getAllShifts();
 	    }
 	    
 	    @RequestMapping(value="/shift/{id}",headers="Accept=application/json",method=RequestMethod.GET)
 	    public Shift getEmployeeById(@PathVariable Long id) {
-	    	return employeeService.getShiftById(id);
+	    	return shiftService.getShiftById(id);
 	    }
 	    
 	    //Add Method
 	    @RequestMapping(value="/shift",headers="Accept=application/json",method=RequestMethod.POST)
 	    public void addEmployee( @RequestBody Shift shift) {
-	        employeeService.addShift(shift);
+	        shiftService.addShift(shift);
 	    }
 	    
 	    //Update Method
 	    @RequestMapping(value="/shift",headers="Accept=application/json",method=RequestMethod.PUT)
 	    public void updateEmployee(@RequestBody Shift shift ) {
-	        employeeService.updateShift(shift);
+	        shiftService.updateShift(shift);
 	    }
 	    
 	    //Delete Method
 	    @RequestMapping(value="/shift/{id}",headers="Accept=application/json",method=RequestMethod.DELETE)
 	    public void deleteEmployee( @PathVariable long id) {
-	        employeeService.deleteShift(id);
+	        shiftService.deleteShift(id);
 	    }
 }
