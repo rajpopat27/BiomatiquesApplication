@@ -1,5 +1,6 @@
 package com.biomatiques.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class AttendanceController {
 	AttendanceService attendanceService;
 	
 	@RequestMapping(value="/attendance",method=RequestMethod.POST,headers="Accept=application/json")
-	public void addAttendance(@RequestBody byte[] irisId) {
+	public void addAttendance(@RequestBody byte[] irisId) throws ParseException {
 		attendanceService.addAttendance(irisId);
 	}
 	

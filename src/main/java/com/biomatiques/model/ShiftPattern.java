@@ -21,7 +21,7 @@ public class ShiftPattern {
 
 	@Id
 	@JsonProperty("EmployeeId")
-    @Column(name="EmployeeId")
+    @Column(name="Id")
 	private long id;
 	
 	

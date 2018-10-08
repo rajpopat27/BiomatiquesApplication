@@ -19,6 +19,4 @@ public interface AttendanceRepository extends CrudRepository <Attendance,Long> {
 	@Query(value="SELECT * FROM attendance a WHERE date(a.attended_date) = :date " ,nativeQuery = true)
 	public List<Attendance> findAttendanceByDate(@Param("date") String date);
 	
-	
-
 }
