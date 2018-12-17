@@ -1,5 +1,9 @@
 package com.biomatiques.service;
 
+
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -11,8 +15,11 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.biomatiques.controller.AttendanceController;
 import com.biomatiques.model.Attendance;
 import com.biomatiques.model.Employee;
 import com.biomatiques.model.Shift;
@@ -21,6 +28,8 @@ import com.biomatiques.repository.AttendanceRepository;
 import com.biomatiques.repository.EmployeeRepository;
 import com.biomatiques.repository.ShiftPatternRepository;
 import com.biomatiques.repository.ShiftRepository;
+
+
 
 @Service
 public class AttendanceService {
@@ -34,10 +43,16 @@ public class AttendanceService {
 	 @Autowired
 	    private ShiftRepository shiftRepository;
 	 
+	 @Autowired
+	 	private AttendanceController attendanceController;
+	 
 	 DateTimeFormatter dtf =  DateTimeFormatter.ofPattern("HH:mm:ss");
      
      String Starttime,Endtime,Currenttime;
+     
 	 long shiftId;
+	 
+	 boolean attendanceAdded = false;
 	 
 	 public List<Attendance> getAllAttendance() {
 	        List<Attendance> attendanceList = new ArrayList<>();
@@ -63,7 +78,7 @@ public class AttendanceService {
 	        attendanceRepository.findByEmployeeFirstName(firstName).forEach(attendanceList::add);
 	        return attendanceList;
 	    }
-	 public void addAttendance(byte[] irisId) throws ParseException {
+	 public boolean addAttendance(byte[] irisId) throws ParseException, URISyntaxException {
 		 	Employee employee = employeeRepository.findByIrisId(irisId);
 		 	long id = employee.getId();
 		 	ShiftPattern shiftPattern = shiftPatternRepository.findById(id);
@@ -101,14 +116,20 @@ public class AttendanceService {
 		 	Currenttime=dtf.format(now).toString();
 		 	
 		 	if(isTimeBetweenTwoTime(Starttime, Endtime, Currenttime)) {
+		 		
 		 		Attendance attendance = new Attendance();
 			 	attendance.setEmployeeFirstName(employee.getFirstname());
 			 	attendance.setEmployeeLastName(employee.getLastname());
 			 	attendance.setEmployeeId(employee.getId());
-		        attendanceRepository.save(attendance);
+		        attendanceRepository.save(attendance); 	
+		        attendanceAdded = true;
 		 	}
-		 	
+		 	else {
+		 		attendanceAdded=false;
+		 	}
+		 return attendanceAdded;
 	    }
+	 
 	 /*public void addAttendance(byte[] irisId) {
 		 	Employee employee = employeeRepository.findByIrisId(irisId);
 		 	Attendance attendance = new Attendance();

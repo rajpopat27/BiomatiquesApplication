@@ -12,3 +12,4 @@ public class BiomatiquesApplication {
 		SpringApplication.run(BiomatiquesApplication.class, args);
 	}
 }
+

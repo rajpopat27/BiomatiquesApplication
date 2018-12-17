@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Employee implements Serializable{
    
-   
+
 	public Employee() {
        
     }
@@ -44,24 +44,24 @@ public class Employee implements Serializable{
     	private long id;
 	    
 	    @NotEmpty
-		@JsonProperty("First Name")	
+		@JsonProperty("FirstName")	
         public String firstname;
 		
 	    @NotEmpty
-		@JsonProperty("Middle Name")
+		@JsonProperty("MiddleName")
         public String middlename;
 		
 	    @NotEmpty
-		@JsonProperty("Last Name")
+		@JsonProperty("LastName")
         public String lastname;
 		
 	    @NotEmpty
-		@JsonProperty("Phone number")
+		@JsonProperty("PhoneNumber")
 	    @Pattern(regexp="(^$|[0-9]{10})")
         public String phoneno;
 		
 	    
-		@JsonProperty("Date of birth")
+		@JsonProperty("DateOfBirth")
 		@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 		public Date dob;
         
@@ -82,19 +82,19 @@ public class Employee implements Serializable{
 		public String email;
         
 	    
-        @JsonProperty("Linkedin Id")
+        @JsonProperty("LinkedinId")
         public String linkedinid;
         
         @NotEmpty
-        @JsonProperty("Blood group")
+        @JsonProperty("BloodGroup")
         public String bloodgroup;
         
         @NotEmpty
-        @JsonProperty("Aadhar number")
+        @JsonProperty("AadharNumber")
         public String aadharno;
         
         @Min(0)
-        @JsonProperty("Experience years")
+        @JsonProperty("ExperienceYears")
         public Integer experience;
         
         @NotEmpty
@@ -102,15 +102,15 @@ public class Employee implements Serializable{
         public String department;
         
         @NotEmpty
-        @JsonProperty("Employee type")
+        @JsonProperty("EmployeeType")
         public String employeetype;
         
         @NotEmpty
-        @JsonProperty("Employee post")
+        @JsonProperty("EmployeePost")
         public String post;
         
         @NotEmpty
-        @JsonProperty("Shift name")
+        @JsonProperty("ShiftName")
         public String shiftname;
         
         @Min(1000)
@@ -118,7 +118,7 @@ public class Employee implements Serializable{
         public Long salary;
            
         @NotEmpty
-        @JsonProperty("Iris Id")
+        @JsonProperty("IrisId")
         @Lob       
         public byte[] irisId;
         

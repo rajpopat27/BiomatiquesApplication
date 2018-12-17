@@ -15,28 +15,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name="Shift")
 public class Shift {
-	
-	
 	public Shift() {
 		
 	}
-
-
 	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="shiftId")
 	private long id;
     
     @NotEmpty
-	@JsonProperty("Shift Name")	
+	@JsonProperty("ShiftName")	
     public String shiftName;
     
    
-	@JsonProperty("Start Time")	
+	@JsonProperty("StartTime")	
     public Time	 startTime;
     
     
-	@JsonProperty("End Time")	
+	@JsonProperty("EndTime")	
     public Time endTime;
     
 	public String getShiftName() {

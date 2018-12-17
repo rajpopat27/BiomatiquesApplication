@@ -1,16 +1,19 @@
 package com.biomatiques.controller;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.biomatiques.model.Attendance;
 import com.biomatiques.service.AttendanceService;
@@ -22,8 +25,13 @@ public class AttendanceController {
 	AttendanceService attendanceService;
 	
 	@RequestMapping(value="/attendance",method=RequestMethod.POST,headers="Accept=application/json")
-	public void addAttendance(@RequestBody byte[] irisId) throws ParseException {
-		attendanceService.addAttendance(irisId);
+	public ResponseEntity<Void> addAttendance(@RequestBody byte[] irisId) throws ParseException, URISyntaxException {
+ 		if(attendanceService.addAttendance(irisId)==true) {
+			 return ResponseEntity.created(new URI("done")).build();
+		}
+		else{
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
 	}
 	
 	@RequestMapping(value="/attendance",method=RequestMethod.GET)
@@ -46,5 +54,5 @@ public class AttendanceController {
 			return attendanceService.getAttendanceByDate(date);
 		}
 	
-	
+	 
 }
